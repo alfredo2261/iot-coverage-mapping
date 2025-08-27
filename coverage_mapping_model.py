@@ -18,13 +18,6 @@ import seaborn as sn
 import matplotlib.pyplot as plt
 from pickle import dump
 
-# Is this the correct approach for generating train/val/test datasets?
-# What is X? X is dataset created from make_geodata + log(distance)
-# What is y? y comes from geopandas df received/no received binary
-# When testing using Geneva data, how do I create linksfile and rasterfile? I will create linksfile. Rasterfile comes from dsm
-# Is there a DTM for Geneva? Do I need DTM? DTM is DSM
-# How do you get elevation data? I get elevation from DSM
-# Geneva correct projection: utm = "EPSG:26918"  # https://epsg.io/26918
 
 # ~2000 examples collected in Geneva today. Try training a model using the following features:
     # Log(distance), transmitter elevation, receiver elevation, line of site variable (positives/total)
@@ -32,9 +25,6 @@ from pickle import dump
 # 7980 successes, 89352 failures. Should there be more balanced classes?
     # 1) Throw out obvious failures first. Short range failures are more interesting. Sort by distance btw gateway and transmission
     # 2) Use sample weights in pytorch. Scale each observation by the weight when loss is computed
-# What is meant by log(distance)? Is distance measured btw transmission and gateway?
-# What other features can be included? Accuracy is ~29% right now (I believe)
-    # Elevation, transmitted power, spreading factor. All features should be those that are available where data has not yet been transmitted.
 # Formulating optimization problem: How to optimize gateway placement from this?
 
 X_path = "/mnt/Expansion/aar245/test/coverage_mapping/antwerp_data/antwerp_output_geo_condensed/"
